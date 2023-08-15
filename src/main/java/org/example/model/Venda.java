@@ -1,6 +1,8 @@
 package org.example.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Venda extends EntityId{
 
@@ -8,6 +10,8 @@ public class Venda extends EntityId{
     private Cliente cliente;
     private FormaPagamento formaPagamento;
     private String obs;
+
+    private List<ItemVenda> itens = new ArrayList<>();
 
     public LocalDate getDataVenda() {
         return dataVenda;
@@ -39,5 +43,28 @@ public class Venda extends EntityId{
 
     public void setObs(String obs) {
         this.obs = obs;
+    }
+
+    public void addItemVenda(ItemVenda itemVenda){
+        this.itens.add(itemVenda);
+    }
+
+    public void delItemVenda(ItemVenda itemVenda){
+        this.itens.remove(itemVenda);
+    }
+
+    public List<ItemVenda> getItens(){
+       return itens;
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" +
+                "dataVenda=" + dataVenda +
+                ", cliente=" + cliente +
+                ", formaPagamento=" + formaPagamento +
+                ", obs='" + obs + '\'' +
+                ", itens=" + itens +
+                '}';
     }
 }

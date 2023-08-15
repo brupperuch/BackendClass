@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.model.Cliente;
-import org.example.model.Fornecedor;
-import org.example.model.Produto;
-import org.example.model.Status;
+import org.example.model.*;
 
 import java.time.LocalDate;
 
@@ -38,11 +35,24 @@ public class Application {
         rique.setTelefone("051 99767122");
         rique.setEndereco("Cu do Judas");
 
+        Venda venda01 = new Venda();
+        venda01.setId(10l);
+        venda01.setDataVenda(LocalDate.of(2023,1,1));
+        venda01.setCliente(rique);
+        venda01.setFormaPagamento(FormaPagamento.PIX);
+        venda01.setObs("Tentou oferecer um rim como pagamento, suspeitamos de cirrose");
+
+        ItemVenda itVenda = new ItemVenda(produto, 25000D,1D,10D);
+        venda01.addItemVenda(itVenda);
+
+
         System.out.println(produto.getNome());
 
         System.out.println("Margem: " + produto.calcuclaMargemDeLucro() + "%");
 
         System.out.println(dell.getNome()+"  "+dell.Endereco);
+
+        System.out.println(venda01.getItens());
     }
 
     ///QLQCOISA

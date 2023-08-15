@@ -6,5 +6,6 @@ public enum FormaPagamento {
     CRÉDITO,
     DÉBITO,
     DINHEIRO,
-    PIX
+    PIX,
+    RIM
 }
