@@ -21,4 +21,10 @@ public class Fornecedor extends Pessoa{
     public void setIes(String ies) {
         this.ies = ies;
     }
+
+    @Override
+    public String getDocumentoPrincipal(){
+        return getCnpj();
+    }
+
 }

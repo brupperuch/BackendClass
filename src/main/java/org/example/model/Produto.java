@@ -25,7 +25,7 @@ public class Produto extends ItemVendavel{
     }
 
     public  void setDescricao(String descricao) {
-        this.descricao = descricao;
+        super.setDescri(descricao);
     }
 
     public  Double getPrecoVenda() {
@@ -35,9 +35,15 @@ public class Produto extends ItemVendavel{
     public Produto() {
     }
 
+    public Produto(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+
     public  void setPrecoVenda(Double precoVenda) {
 
         this.precoVenda = precoVenda;
+        super.setvUnitario(this.precoVenda);
         if(this.calcuclaMargemDeLucro() < 20.0){
             System.out.println("A margem de lucro está abaixo do minímo");
         }
@@ -76,8 +82,8 @@ public class Produto extends ItemVendavel{
     }
 
     public Double calcuclaMargemDeLucro() {
-        double lucro = precoVenda - precoCompra;
-        double margemLucro = (lucro / precoVenda) * 100;
+        double lucro = super.getvUnitario() - precoCompra;
+        double margemLucro = (lucro / super.getvUnitario()) * 100;
         return margemLucro;
     }
 

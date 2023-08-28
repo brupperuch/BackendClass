@@ -20,4 +20,10 @@ public class Cliente extends Pessoa {
     public void setRg(String rg) {
         this.rg = rg;
     }
+
+    @Override
+    public String getDocumentoPrincipal(){
+        return this.getCpf();
+    }
+
 }

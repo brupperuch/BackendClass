@@ -4,6 +4,7 @@ public class ItemVendavel extends EntityId{
     private String descri;
     private Double vUnitario;
 
+    private Boolean estocavel;
     public String getDescri() {
         return descri;
     }
@@ -20,8 +21,17 @@ public class ItemVendavel extends EntityId{
         this.vUnitario = vUnitario;
     }
 
-    public ItemVendavel(String descri, Double vUnitario) {
-        this.descri = descri;
-        this.vUnitario = vUnitario;
+    public Boolean getEstocavel() {
+        return estocavel;
     }
+
+    public void setEstocavel(Boolean estocavel) {
+        this.estocavel = estocavel;
+    }
+
+    @Override
+    public String toString(){
+        return "Descrição: "+ descri + "Valor Unitário: " + vUnitario;
+    }
+
 }

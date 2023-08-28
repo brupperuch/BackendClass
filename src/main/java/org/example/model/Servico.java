@@ -22,6 +22,11 @@ public class Servico extends ItemVendavel{
         Valor = valor;
     }
 
+    @Override
+    public Boolean getEstocavel() {
+        return false;
+    }
+
     public Servico(String descri, Double qtdHoras, Double valor) {
         super.setDescri(descri);
         this.qtdHoras = qtdHoras;

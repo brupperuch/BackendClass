@@ -7,52 +7,64 @@ import java.time.LocalDate;
 public class Application {
 
     public static void main(String[] args) {
-        //Produto produto = new Produto (10, "Impressora 3D HP", "Impressora 3D filamento",
-        //1200.00, 1500.00, LocalDate.of(2023, 01, 15),
-                //LocalDate.of(2023, 01, 15), Status.DISPONIVEL);
 
-        Produto produto = new Produto();
-        produto.setNome("Impressora 3D HP");
-        produto.setDescricao("Impressora 3D filaento XYZ");
-        produto.setDataPrazo(LocalDate.of(2023, 01, 15));
-        produto.setPrecoCompra(1200.00);
-        produto.setPrecoVenda(1500.00);
-        produto.setStatus(Status.DISPONIVEL);
-
-        Fornecedor dell = new Fornecedor();
-        dell.setNome("DELL LTDA");
-        dell.setCnpj("44654646654666");
-        dell.setIes("44654648248");
-        dell.setEmail("comercial@dell.com.br");
-        dell.setTelefone("48 99767122");
-        dell.setEndereco("Rua Jacinto Pinto Ineu Rego");
-
-        Cliente rique = new Cliente();
-        rique.setNome("Henrique Angar");
-        rique.setCpf("03716711080");
-        rique.setRg("4120403136");
-        rique.setEmail("henriqueangar@Gmail.com");
-        rique.setTelefone("051 99767122");
-        rique.setEndereco("Cu do Judas");
-
-        Venda venda01 = new Venda();
-        venda01.setId(10l);
-        venda01.setDataVenda(LocalDate.of(2023,1,1));
-        venda01.setCliente(rique);
-        venda01.setFormaPagamento(FormaPagamento.PIX);
-        venda01.setObs("Tentou oferecer um rim como pagamento, suspeitamos de cirrose");
-
-        ItemVenda itVenda = new ItemVenda(produto, 25000D,1D,10D);
-        venda01.addItemVenda(itVenda);
+        //Declaração de fornecedor
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setNome("Dell Ltda");
 
 
-        System.out.println(produto.getNome());
+//Declaração de cliente
+        Cliente cliente = new Cliente();
+        cliente.setNome("Bruno Kurzawe");
 
-        System.out.println("Margem: " + produto.calcuclaMargemDeLucro() + "%");
 
-        System.out.println(dell.getNome()+"  "+dell.Endereco);
+//Declaração de Produto
+        Produto produto = new Produto("Computador", "I5 8gb");
+        Servico servico = new Servico("Instalação Office", 2.0, 100.00);
 
-        System.out.println(venda01.getItens());
+
+//Declaração de Compras
+        Compra compra = new Compra();
+        compra.setDataCompra(LocalDate.now());
+        compra.setFornecedor(fornecedor);
+        ItemCompra itemC1 = new ItemCompra(produto, 1000.00, 10.0, 10.0);
+        compra.addItemCompra(itemC1);
+
+
+//Declaração de Vendas
+        Venda venda = new Venda();
+        venda.setDataVenda(LocalDate.now());
+        venda.setCliente(cliente);
+        ItemVenda item = new ItemVenda(produto, 1500.00, 1.0, 10.0);
+        venda.addItemVenda(item);
+
+
+        Venda venda2 = new Venda();
+        venda2.setDataVenda(LocalDate.now());
+        venda2.setCliente(cliente);
+        ItemVenda item2 = new ItemVenda(produto, 1500.00, 1.0, 10.0);
+        venda2.addItemVenda(item2);
+        ItemVenda item3 = new ItemVenda(servico, 150.00, 1.0, 10.0);
+        venda2.addItemVenda(item3);
+
+
+//Declaração de Lotacao
+        Locacao locacao = new Locacao();
+        locacao.setCliente(cliente);
+        locacao.setDataLocacao(LocalDate.now());
+        ItemLocacao itemL1 = new ItemLocacao(produto, 150.00, 10.0, 0.0);
+        locacao.addItemLocacao(itemL1);
+
+        Balanco balanco = new Balanco();
+        balanco.setId(165165L);
+        balanco.setDataBalanco(LocalDate.now());
+        balanco.setResponsavel("Maria Luiza");
+        balanco.addOperacoes(venda);
+        balanco.addOperacoes(venda2);
+        balanco.addOperacoes(compra);
+        balanco.addOperacoes(locacao);
+
+        balanco.imprimirBalanco();
     }
 
     ///QLQCOISA

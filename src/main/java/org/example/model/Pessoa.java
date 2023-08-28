@@ -1,6 +1,6 @@
 package org.example.model;
 
-public class Pessoa extends EntityId{
+public abstract class Pessoa extends EntityId{
 
     private String nome;
 
@@ -41,4 +41,6 @@ public class Pessoa extends EntityId{
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public abstract String getDocumentoPrincipal();
 }
